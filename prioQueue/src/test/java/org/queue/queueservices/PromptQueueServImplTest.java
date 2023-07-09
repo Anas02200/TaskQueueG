@@ -50,7 +50,7 @@ class PromptQueueServImplTest {
         queueServices.initFromDisk();
 
 
-        List<PrioPromptTask> poll = queueServices.poll(5);
+        List<PrioPromptTask> poll = queueServices.poll(10);
 
 
 

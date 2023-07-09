@@ -39,6 +39,7 @@ public class PromptQueueServImpl implements QueueServices<PrioPromptTask> {
         try (FileOutputStream fos = new FileOutputStream(QUEUE_FILE_NAME); ObjectOutputStream oos =
                 new ObjectOutputStream(fos)) {
             oos.writeObject(queue);
+            System.out.println("persisted");
             return true;
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -85,13 +86,7 @@ public class PromptQueueServImpl implements QueueServices<PrioPromptTask> {
 // n threads will poll the queue , wait for all results then returns
         List<CompletableFuture<Object>> futures = new ArrayList<>();
         for (int i = 0; i < numElements; i++) {
-            CompletableFuture<Object> prioPromptTaskCompletableFuture = CompletableFuture.supplyAsync(() -> {
-                try {
-                    return pollq();
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            });
+            CompletableFuture<Object> prioPromptTaskCompletableFuture = CompletableFuture.supplyAsync(queue::poll);
 
             futures.add(prioPromptTaskCompletableFuture);
         }
@@ -113,7 +108,7 @@ public class PromptQueueServImpl implements QueueServices<PrioPromptTask> {
 
         System.out.println(Thread.currentThread().getName());
 
-        return queue.poll(500, TimeUnit.MILLISECONDS);
+        return queue.poll();
     }
 
     @Override

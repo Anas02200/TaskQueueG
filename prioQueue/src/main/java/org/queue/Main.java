@@ -1,5 +1,7 @@
 package org.queue;
 
+import org.queue.queueservices.PromptQueueServImpl;
+import org.queue.queueservices.QueueServices;
 import org.queue.taskmodels.PriorityTask;
 
 import java.util.concurrent.PriorityBlockingQueue;
@@ -13,7 +15,6 @@ public class Main {
 
 
         PriorityBlockingQueue<PriorityTask> queue = new PriorityBlockingQueue<>();
-
 
 
 
