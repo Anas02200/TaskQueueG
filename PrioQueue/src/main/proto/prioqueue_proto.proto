@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+
+
+option java_package = "org.queue.grpc.generated";
+option java_multiple_files = true;
+
+
+
+service QueueOps {
+
+  rpc addJobToQueue (addJobRequest) returns (addJobReply) {}
+
+
+  rpc getJobsFromQueue(getNJobs) returns(getNJobsReply){}
+
+
+}
+
+
+
+
+
+message addJobRequest {
+
+  int32 priority = 1;
+  string message = 2;
+
+}
+
+
+message addJobReply{
+
+  string jobId = 1;
+
+}
+
+
+message systemJob{
+  string jobId = 1;
+  string userId = 2;
+  string promptData = 3;
+  int32 priority = 4;
+}
+
+message getNJobs{
+
+  int32 numOfJobs = 1;
+  bool ispriority =2;
+
+}
+message getNJobsReply{
+
+  repeated systemJob jobs = 1;
+
+}
