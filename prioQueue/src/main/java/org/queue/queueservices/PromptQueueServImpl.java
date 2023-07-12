@@ -41,8 +41,6 @@ public class PromptQueueServImpl implements QueueServices<PrioPromptTask> {
             oos.writeObject(queue);
             System.out.println("persisted");
             return true;
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -69,9 +67,7 @@ public class PromptQueueServImpl implements QueueServices<PrioPromptTask> {
         } catch (FileNotFoundException e) {
             System.out.println("TMP FILE NOT FOUND");
             return false;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
 
@@ -102,7 +98,7 @@ public class PromptQueueServImpl implements QueueServices<PrioPromptTask> {
         return queue.peek();
     }
 
-    private PrioPromptTask pollq() throws InterruptedException {
+    private PrioPromptTask pollq() {
 
         System.out.println(Thread.currentThread().getName());
 
