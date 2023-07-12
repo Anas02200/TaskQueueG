@@ -6,7 +6,7 @@ public abstract class PriorityTask extends BaseTaskModel implements Comparable<P
     private int priority;
 
 
-    public PriorityTask(String id, String userId) {
+    protected PriorityTask(String id, String userId) {
         super(id, userId);
     }
 

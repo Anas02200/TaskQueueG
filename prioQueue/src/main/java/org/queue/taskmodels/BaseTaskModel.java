@@ -11,13 +11,13 @@ private String userId;
 private LocalDateTime issuedAt;
 
 
-    public BaseTaskModel(String id, String userId) {
+    protected BaseTaskModel(String id, String userId) {
         this.id = id;
         this.userId = userId;
         issuedAt = LocalDateTime.now();
     }
 
-    public BaseTaskModel() {
+    protected BaseTaskModel() {
 
     }
 

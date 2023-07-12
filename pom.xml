@@ -124,8 +124,7 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                     <compilerArgs>--enable-preview</compilerArgs>
-                    <!--                    <release>${maven.compiler.target}</release>-->
-                    <!--                    <enablePreview>true</enablePreview>-->
+
                 </configuration>
             </plugin>
             <plugin>

@@ -8,7 +8,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.TimeUnit;
+
 import java.util.stream.Collectors;
 
 public class PromptQueueServImpl implements QueueServices<PrioPromptTask> {
@@ -86,7 +86,7 @@ public class PromptQueueServImpl implements QueueServices<PrioPromptTask> {
         }
 
 
-        return futures.stream().map(CompletableFuture::join).map(x -> (PrioPromptTask) x).collect(Collectors.toList());
+        return futures.stream().map(CompletableFuture::join).map(x -> (PrioPromptTask) x).toList();
 
 
     }
