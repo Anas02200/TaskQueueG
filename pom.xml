@@ -21,6 +21,7 @@
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>io.grpc</groupId>
             <artifactId>grpc-netty-shaded</artifactId>
@@ -123,8 +124,8 @@
                     <source>${maven.compiler.source}</source>
                     <target>${maven.compiler.target}</target>
                     <compilerArgs>--enable-preview</compilerArgs>
-<!--                    <release>${maven.compiler.target}</release>-->
-<!--                    <enablePreview>true</enablePreview>-->
+                    <!--                    <release>${maven.compiler.target}</release>-->
+                    <!--                    <enablePreview>true</enablePreview>-->
                 </configuration>
             </plugin>
             <plugin>
@@ -140,12 +141,45 @@
                     </archive>
                 </configuration>
             </plugin>
-        </plugins>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+            </plugin>
 
+
+        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.sonarsource.scanner.maven</groupId>
+                    <artifactId>sonar-maven-plugin</artifactId>
+                    <version>3.9.1.2184</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
+    <profiles>
+        <profile>
+            <id>sonar</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!-- Optional URL to server. Default value is http://localhost:9000 -->
+                <sonar.host.url>
+                    http://localhost:9000
+                </sonar.host.url>
+                <sonar.token>
+                    sqp_7f6219a9acb51b0893135c77baf531747a7e7fa4
+                </sonar.token>
 
-
+                <sonar.projectName>
+                    'queue'
+                </sonar.projectName>
+            </properties>
+        </profile>
+    </profiles>
 
 
 </project>

@@ -56,16 +56,14 @@ public class PromptQueueServImpl implements QueueServices<PrioPromptTask> {
                 new ObjectInputStream(fos)) {
             Object o = oos.readObject();
 
-            return switch (o) {
-                case PriorityBlockingQueue i -> {
-                    queue = i;
-                    yield true;
+            if (o instanceof PriorityBlockingQueue<?>) {
 
+                queue = ((PriorityBlockingQueue<PrioPromptTask>) o);
+                return true;
+            } else {
 
-                }
-
-                default -> false;
-            };
+                return false;
+            }
 
 
         } catch (FileNotFoundException e) {
