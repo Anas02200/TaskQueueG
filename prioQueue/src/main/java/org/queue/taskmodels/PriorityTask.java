@@ -1,7 +1,7 @@
 package org.queue.taskmodels;
 
 public abstract class PriorityTask extends BaseTaskModel implements Comparable<PriorityTask> {
-
+    static final long serialVersionUID = 42L;
 
     private int priority;
 

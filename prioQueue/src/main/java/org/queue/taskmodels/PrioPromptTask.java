@@ -1,7 +1,7 @@
 package org.queue.taskmodels;
 
 public class PrioPromptTask extends PriorityTask{
-
+    static final long serialVersionUID = 42L;
     private String prompt;
 
 

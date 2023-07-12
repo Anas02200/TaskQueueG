@@ -52,9 +52,11 @@ class PromptQueueServImplTest {
 
         List<PrioPromptTask> poll = queueServices.poll(10);
 
-
+        assertNotNull(poll);
 
         poll.forEach(x-> System.out.println(x.getPriority()));
+
+
 
     }
 

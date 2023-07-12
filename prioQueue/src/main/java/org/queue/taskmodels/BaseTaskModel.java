@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 
 public abstract class BaseTaskModel implements Serializable {
+    static final long serialVersionUID = 42L;
+    private String id;
+    private String userId;
 
-private String id;
-private String userId;
-
-private LocalDateTime issuedAt;
+    private LocalDateTime issuedAt;
 
 
     protected BaseTaskModel(String id, String userId) {
