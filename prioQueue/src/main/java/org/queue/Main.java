@@ -12,7 +12,7 @@ public class Main {
         System.out.println("QUEUE starting");
 
     // helllo
-
+// build dis
         new PriorityBlockingQueue<>();
 
 
